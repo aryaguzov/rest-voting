@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>rest-voting</name>
-    <description>rest-voting</description>
+    <description>A voting system for deciding where to have lunch at</description>
     <properties>
         <java.version>17</java.version>
     </properties>
