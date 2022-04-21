@@ -11,12 +11,12 @@ public abstract class AbstractBaseEntity {
     @Id
     @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
-    protected int id;
+    protected Integer id;
 
     protected AbstractBaseEntity() {
     }
 
-    protected AbstractBaseEntity(int id) {
+    protected AbstractBaseEntity(Integer id) {
         this.id = id;
     }
 
@@ -24,7 +24,7 @@ public abstract class AbstractBaseEntity {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -33,7 +33,7 @@ public abstract class AbstractBaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractBaseEntity that = (AbstractBaseEntity) o;
-        return id == that.id;
+        return Objects.equals(id, that.id);
     }
 
     @Override
@@ -46,5 +46,9 @@ public abstract class AbstractBaseEntity {
         return "AbstractBaseEntity{" +
                 "id=" + id +
                 '}';
+    }
+
+    public boolean isNew() {
+        return this.id == null;
     }
 }
