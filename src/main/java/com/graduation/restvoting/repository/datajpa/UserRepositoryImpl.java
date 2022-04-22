@@ -2,6 +2,7 @@ package com.graduation.restvoting.repository.datajpa;
 
 import com.graduation.restvoting.model.User;
 import com.graduation.restvoting.repository.UserRepository;
+import com.graduation.restvoting.util.exception.NotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
@@ -31,7 +32,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User get(int id) {
-        return crudUserRepository.getById(id);
+        return crudUserRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("A user with id=%d doesn't exist", id)));
     }
 
     @Override
