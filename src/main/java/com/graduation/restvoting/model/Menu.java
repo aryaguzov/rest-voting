@@ -23,7 +23,7 @@ public class Menu extends AbstractBaseEntity {
     public Menu() {
     }
 
-    public Menu(int id, String name, double price, Restaurant restaurant) {
+    public Menu(Integer id, String name, double price, Restaurant restaurant) {
         super(id);
         this.name = name;
         this.price = price;

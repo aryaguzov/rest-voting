@@ -37,7 +37,7 @@ public class User extends AbstractBaseEntity {
     public User() {
     }
 
-    public User(int id, String name, String email, String password, boolean enabled, Collection<Role> roles) {
+    public User(Integer id, String name, String email, String password, boolean enabled, Collection<Role> roles) {
         super(id);
         this.name = name;
         this.email = email;
