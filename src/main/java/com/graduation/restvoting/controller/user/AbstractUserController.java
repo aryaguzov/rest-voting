@@ -1,10 +1,13 @@
 package com.graduation.restvoting.controller.user;
 
+import com.graduation.restvoting.model.Restaurant;
 import com.graduation.restvoting.model.User;
 import com.graduation.restvoting.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -16,7 +19,7 @@ public abstract class AbstractUserController {
     protected Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    protected UserService userService;
+    private UserService userService;
 
     public List<User> getAll() {
         log.info("get all users");

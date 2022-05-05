@@ -2,6 +2,7 @@ package com.graduation.restvoting.repository.datajpa;
 
 import com.graduation.restvoting.model.Restaurant;
 import com.graduation.restvoting.repository.RestaurantRepository;
+import com.graduation.restvoting.util.exception.NotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
@@ -31,11 +32,17 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @Override
     public Restaurant get(int id) {
-        return crudRestaurantRepository.getById(id);
+        return crudRestaurantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("A restaurant with id=%d doesn't exist", id)));
     }
 
     @Override
     public void delete(int id) {
         crudRestaurantRepository.deleteById(id);
+    }
+
+    @Override
+    public Restaurant getWithMeals(int id) {
+        return crudRestaurantRepository.getWithMeals(id);
     }
 }

@@ -34,4 +34,11 @@ public interface RestaurantRepository {
      * @param id provided restaurant id.
      */
     void delete(int id);
+
+    /**
+     * Get a specific {@link Restaurant} entity with meals.
+     *
+     * @param id provided restaurant id.
+     */
+    Restaurant getWithMeals(int id);
 }

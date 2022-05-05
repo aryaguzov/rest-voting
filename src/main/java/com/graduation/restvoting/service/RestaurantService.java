@@ -47,4 +47,8 @@ public class RestaurantService {
         Objects.requireNonNull(restaurant, "Restaurant must not be null.");
         checkNotFoundWithId(restaurantRepository.save(restaurant), restaurant.getId());
     }
+
+    public Restaurant getWithMeals(int id) {
+        return checkNotFoundWithId(restaurantRepository.getWithMeals(id), id);
+    }
 }
