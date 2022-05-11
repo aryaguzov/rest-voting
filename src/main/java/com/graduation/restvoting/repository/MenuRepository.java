@@ -34,4 +34,11 @@ public interface MenuRepository {
      * @param id provided menu id.
      */
     void delete(int id);
+
+    /**
+     * Update a specific {@link Menu} entity.
+     *
+     * @param id provided menu id.
+     */
+    void updateRestaurant(int id);
 }

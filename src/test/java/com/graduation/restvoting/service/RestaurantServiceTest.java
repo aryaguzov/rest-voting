@@ -1,6 +1,7 @@
 package com.graduation.restvoting.service;
 
 import com.graduation.restvoting.model.Restaurant;
+import com.graduation.restvoting.repository.MenuRepository;
 import com.graduation.restvoting.repository.RestaurantRepository;
 import com.graduation.restvoting.util.exception.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +26,9 @@ class RestaurantServiceTest extends AbstractServiceTest {
     @Mock
     public RestaurantRepository restaurantRepository;
 
+    @Mock
+    public MenuRepository menuRepository;
+
     @InjectMocks
     public RestaurantService restaurantService;
 
@@ -33,7 +37,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
     @BeforeEach
     void setup() {
         restaurantRepository = Mockito.mock(RestaurantRepository.class);
-        restaurantService = new RestaurantService(restaurantRepository);
+        restaurantService = new RestaurantService(restaurantRepository, menuRepository);
         actual = new Restaurant(1, "Lucky Pub");
     }
 

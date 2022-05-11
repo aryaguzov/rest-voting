@@ -1,5 +1,6 @@
 package com.graduation.restvoting.repository;
 
+import com.graduation.restvoting.model.Menu;
 import com.graduation.restvoting.model.Restaurant;
 
 import java.util.List;
@@ -34,11 +35,4 @@ public interface RestaurantRepository {
      * @param id provided restaurant id.
      */
     void delete(int id);
-
-    /**
-     * Get a specific {@link Restaurant} entity with meals.
-     *
-     * @param id provided restaurant id.
-     */
-    Restaurant getWithMeals(int id);
 }

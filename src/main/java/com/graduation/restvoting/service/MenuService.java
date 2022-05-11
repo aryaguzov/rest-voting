@@ -47,4 +47,9 @@ public class MenuService {
         Objects.requireNonNull(menu, "Menu must not be null.");
         checkNotFoundWithId(menuRepository.save(menu), menu.getId());
     }
+
+    @Transactional
+    public void updateRestaurant(int id) {
+        menuRepository.updateRestaurant(id);
+    }
 }

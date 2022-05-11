@@ -48,6 +48,7 @@ public class Restaurant extends AbstractBaseEntity {
         return "Restaurant{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", menus=" + menus +
                 '}';
     }
 }

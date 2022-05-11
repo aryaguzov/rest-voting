@@ -1,12 +1,15 @@
 package com.graduation.restvoting.repository.datajpa;
 
+import com.graduation.restvoting.model.Menu;
 import com.graduation.restvoting.model.Restaurant;
 import com.graduation.restvoting.repository.RestaurantRepository;
 import com.graduation.restvoting.util.exception.NotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of {@link com.graduation.restvoting.repository.RestaurantRepository} interface.
@@ -39,10 +42,5 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
     @Override
     public void delete(int id) {
         crudRestaurantRepository.deleteById(id);
-    }
-
-    @Override
-    public Restaurant getWithMeals(int id) {
-        return crudRestaurantRepository.getWithMeals(id);
     }
 }

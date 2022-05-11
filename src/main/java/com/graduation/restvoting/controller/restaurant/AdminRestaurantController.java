@@ -40,7 +40,7 @@ public class AdminRestaurantController {
         return restaurantService.get(id);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
         log.info(" delete a restaurant with id={}", id);
@@ -67,9 +67,10 @@ public class AdminRestaurantController {
         restaurantService.update(restaurant);
     }
 
-    @GetMapping("/{id}/menus")
-    public Restaurant getWithMeals(@PathVariable int id) {
-        log.info("get a restaurant with meals with id={}", id);
-        return restaurantService.getWithMeals(id);
+    @PutMapping(value = "/menus", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateMenu() {
+        log.info("update menu for all restaurants");
+        restaurantService.updateMenu();
     }
 }

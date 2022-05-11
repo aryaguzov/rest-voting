@@ -1,6 +1,7 @@
 package com.graduation.restvoting.service;
 
 import com.graduation.restvoting.model.Restaurant;
+import com.graduation.restvoting.repository.MenuRepository;
 import com.graduation.restvoting.repository.RestaurantRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +19,11 @@ public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
 
-    public RestaurantService(RestaurantRepository restaurantRepository) {
+    private final MenuRepository menuRepository;
+
+    public RestaurantService(RestaurantRepository restaurantRepository, MenuRepository menuRepository) {
         this.restaurantRepository = restaurantRepository;
+        this.menuRepository = menuRepository;
     }
 
     @Transactional
@@ -48,7 +52,8 @@ public class RestaurantService {
         checkNotFoundWithId(restaurantRepository.save(restaurant), restaurant.getId());
     }
 
-    public Restaurant getWithMeals(int id) {
-        return checkNotFoundWithId(restaurantRepository.getWithMeals(id), id);
+    @Transactional
+    public void updateMenu() {
+        getAll().forEach(restaurant -> menuRepository.updateRestaurant(restaurant.getId()));
     }
 }
